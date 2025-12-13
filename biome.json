@@ -1,0 +1,23 @@
+{
+    "$schema": "https://biomejs.dev/schemas/2.3.8/schema.json",
+    "extends": ["@cumuloworks/configs/biome"],
+    "vcs": {
+        "enabled": true,
+        "clientKind": "git",
+        "useIgnoreFile": true
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "style": {
+                "useTemplate": "off"
+            },
+            "complexity": {
+                "useArrowFunction": "off"
+            },
+            "correctness": {
+                "noInnerDeclarations": "off"
+            }
+        }
+    }
+}

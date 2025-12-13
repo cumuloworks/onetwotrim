@@ -1,0 +1,21 @@
+{
+    "name": "onetwotrim",
+    "version": "1.0.0",
+    "description": "OneTwoTrim - Trim selected layers to match the last selected layer's in/out points",
+    "scripts": {
+        "build": "jsxbin -i src/onetwotrim.jsx -o dist/onetwotrim.jsxbin -v",
+        "prepare": "husky"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^2.3.8",
+        "@cumuloworks/configs": "^1.1.1",
+        "husky": "^9.1.7",
+        "jsxbin": "^2.3.0",
+        "lint-staged": "^16.2.7"
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx,json,jsonc}": [
+            "biome check --write"
+        ]
+    }
+}
