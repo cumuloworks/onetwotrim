@@ -1,6 +1,6 @@
 {
     "name": "onetwotrim",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "OneTwoTrim - Trim selected layers to match the last selected layer's in/out points",
     "scripts": {
         "build": "jsxbin -i src/onetwotrim.jsx -o dist/onetwotrim.jsxbin -v",
