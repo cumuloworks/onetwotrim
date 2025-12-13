@@ -19,6 +19,7 @@ jobs:
 
       - name: Check if tag is on main branch
         id: check-branch
+        shell: bash
         run: |
           git fetch origin main --prune
           if git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
@@ -26,6 +27,21 @@ jobs:
           else
             echo "on_main=false" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Setup Node.js
+        if: steps.check-branch.outputs.on_main == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        if: steps.check-branch.outputs.on_main == 'true'
+        run: npm ci
+
+      - name: Build
+        if: steps.check-branch.outputs.on_main == 'true'
+        run: npm run build
 
       - name: Create Release
         if: steps.check-branch.outputs.on_main == 'true'
