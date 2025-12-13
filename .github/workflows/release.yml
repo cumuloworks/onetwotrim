@@ -7,7 +7,7 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     permissions:
       contents: write
 
@@ -26,21 +26,6 @@ jobs:
           else
             echo "on_main=false" >> "$GITHUB_OUTPUT"
           fi
-
-      - name: Setup Node.js
-        if: steps.check-branch.outputs.on_main == 'true'
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-          cache: "npm"
-
-      - name: Install dependencies
-        if: steps.check-branch.outputs.on_main == 'true'
-        run: npm ci
-
-      - name: Build
-        if: steps.check-branch.outputs.on_main == 'true'
-        run: npm run build
 
       - name: Create Release
         if: steps.check-branch.outputs.on_main == 'true'
